@@ -1,12 +1,14 @@
 {
-  "KPackageStructure": "KWin/Effect",
-  "KPlugin": {
-    "Id": "ro-effect",
-    "Name": "Ro Effect",
-    "Description": "Ro KWin Effect Skeleton",
-    "Version": "0.1.0",
-    "License": "GPL-2.0-or-later",
-    "EnabledByDefault": false
-  },
-  "X-Plasma-API": "declarativescript"
+ "KPackageStructure": "KWin/Effect",
+ "KPlugin": {
+  "Id": "ro-effect",
+  "Name": "Ro Effect",
+  "Description": "Ro OS window animation effect",
+  "Version": "0.1",
+  "License": "GPL",
+  "Authors": [
+   { "Name": "Ro Team" }
+  ]
+ },
+ "X-Plasma-API": "declarativescript"
 }
