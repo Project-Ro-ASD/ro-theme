@@ -1,0 +1,13 @@
+{
+ "KPackageStructure": "Plasma/LookAndFeel",
+ "KPlugin": {
+  "Id": "org.ro.global",
+  "Name": "Ro Global Theme",
+  "Description": "Ro OS default look and feel",
+  "Version": "0.1",
+  "License": "GPL",
+  "Authors": [
+   { "Name": "Ro Team" }
+  ]
+ }
+}

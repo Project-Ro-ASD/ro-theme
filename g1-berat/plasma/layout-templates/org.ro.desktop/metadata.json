@@ -1,0 +1,13 @@
+{
+ "KPackageStructure": "Plasma/LayoutTemplate",
+ "KPlugin": {
+  "Id": "org.ro.desktop",
+  "Name": "Ro Desktop Layout",
+  "Description": "Default desktop layout for Ro OS",
+  "Version": "0.1.0",
+  "License": "GPL-2.0-or-later",
+  "Authors": [
+   { "Name": "Ro Team" }
+  ]
+ }
+}
