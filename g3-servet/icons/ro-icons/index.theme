@@ -1,0 +1,5 @@
+[Icon Theme]
+Name=Ro Icons
+Comment=Ro OS Icon Theme
+Inherits=breeze
+Directories=scalable/apps,scalable/actions
