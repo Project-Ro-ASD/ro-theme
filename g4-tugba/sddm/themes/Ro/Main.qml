@@ -12,7 +12,7 @@ Rectangle {
     Image {
         id: backgroundImage
         anchors.fill: parent
-        source: "mojave_day.png" // Senin ayarladığın .png uzantılı görsel
+        source: "mojave_day.png"
         fillMode: Image.PreserveAspectCrop
         smooth: true
     }
@@ -33,7 +33,7 @@ Rectangle {
             width: 110; height: 110; radius: 55
             anchors.top: parent.top; anchors.topMargin: 40; anchors.horizontalCenter: parent.horizontalCenter
             color: "white"
-            border.color: "#FF7E5F" // Sıcak turuncu
+            border.color: "#FF7E5F"
             border.width: 3
             Text {
                 anchors.centerIn: parent
@@ -68,15 +68,15 @@ Rectangle {
             }
         }
 
-        // Giriş Butonu (Gün Batımı Gradienti)
+        // Giriş Butonu
         Button {
             anchors.top: passField.bottom; anchors.topMargin: 30; anchors.horizontalCenter: parent.horizontalCenter
             width: 260; height: 50
             background: Rectangle {
                 radius: 15
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "#FF7E5F" } // Sıcak Turuncu
-                    GradientStop { position: 1.0; color: "#FEB47B" } // Yumuşak Sarı/Şeftali
+                    GradientStop { position: 0.0; color: "#FF7E5F" }
+                    GradientStop { position: 1.0; color: "#FEB47B" }
                 }
             }
             contentItem: Text { text: "Giriş Yap"; color: "white"; font.pixelSize: 18; font.bold: true; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
@@ -84,18 +84,21 @@ Rectangle {
         }
     }
 
-    // --- ALT BAR: OTURUM VE TÜM GÜÇ BUTONLARI ---
+    // --- AÇIK TEMA ALT BAR VE BUTONLAR ---
     Rectangle {
         anchors.bottom: parent.bottom; width: parent.width; height: 80
-        color: "#66000000" // Butonların okunması için koyu şeffaf bir alt zemin
+        // Siyah yerine kum tonlarına uyumlu çok hafif beyaz şeffaf cam
+        color: "#4DFFFFFF" 
 
         // Sol Alt: Oturum Seçimi
         ComboBox {
             id: sessionSelector
             anchors.left: parent.left; anchors.leftMargin: 30; anchors.verticalCenter: parent.verticalCenter
             width: 180; height: 40; model: sessionModel; textRole: "name"
-            background: Rectangle { color: "#33FFFFFF"; radius: 10; border.color: "transparent" }
-            contentItem: Text { text: sessionSelector.currentText; color: "white"; font.bold: true; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
+            // Arka planı beyazlaştırıp kenarlarına gün batımı turuncusu verdik
+            background: Rectangle { color: "#99FFFFFF"; radius: 10; border.color: "#FF9A8B"; border.width: 1 }
+            // Açık zeminde okunması için yazıyı koyu gri yaptık
+            contentItem: Text { text: sessionSelector.currentText; color: "#444444"; font.bold: true; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
         }
 
         // Sağ Alt: Güç Butonları Grubu
@@ -105,17 +108,18 @@ Rectangle {
 
             Button {
                 text: "Uyut"; onClicked: sddm.suspend()
-                background: Rectangle { color: "#4DFFFFFF"; radius: 10 }
-                contentItem: Text { text: parent.text; color: "white"; font.bold: true; padding: 10 }
+                background: Rectangle { color: "#99FFFFFF"; radius: 10; border.color: "#FF9A8B"; border.width: 1 }
+                contentItem: Text { text: parent.text; color: "#444444"; font.bold: true; padding: 10 }
             }
             Button {
                 text: "Yeniden Başlat"; onClicked: sddm.reboot()
-                background: Rectangle { color: "#4DFFFFFF"; radius: 10 }
-                contentItem: Text { text: parent.text; color: "white"; font.bold: true; padding: 10 }
+                background: Rectangle { color: "#99FFFFFF"; radius: 10; border.color: "#FF9A8B"; border.width: 1 }
+                contentItem: Text { text: parent.text; color: "#444444"; font.bold: true; padding: 10 }
             }
             Button {
                 text: "Kapat"; onClicked: sddm.powerOff()
-                background: Rectangle { color: "#CCFF4444"; radius: 10 } // Dikkat çekici kırmızımsı kapat butonu
+                // Kapat butonunu resimdeki sıcak pembe/kızıl tonuyla değiştirdik
+                background: Rectangle { color: "#FF6A88"; radius: 10 }
                 contentItem: Text { text: parent.text; color: "white"; font.bold: true; padding: 10 }
             }
         }
