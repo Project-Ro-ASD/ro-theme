@@ -1,0 +1,14 @@
+{
+ "KPlugin": {
+  "Id": "RoSplash",
+  "Name": "Ro Splash Screen",
+  "Description": "Splash screen for Ro OS",
+  "Version": "0.1",
+  "License": "GPL",
+  "Authors": [
+   {
+    "Name": "Ro Team"
+   }
+  ]
+ }
+}

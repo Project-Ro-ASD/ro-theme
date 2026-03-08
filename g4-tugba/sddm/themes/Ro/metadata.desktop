@@ -1,7 +1,8 @@
-[General]
-Name=Ro Login
+[SddmGreeterTheme]
+Name=Ro
 Description=Ro OS Login Theme
 Author=Ro Team
+Type=sddm-theme
 Version=0.1
 MainScript=Main.qml
-ConfigFile=theme.conf
+Theme-Id=Ro

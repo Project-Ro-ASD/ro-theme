@@ -1,15 +1,14 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.15
 
 Rectangle {
-    width: 1920
-    height: 1080
+    width: 640
+    height: 480
     color: "#0f0f17"
 
     Text {
         anchors.centerIn: parent
-        text: "Ro OS Login"
+        text: "Ro OS"
         color: "white"
-        font.pixelSize: 36
+        font.pixelSize: 40
     }
 }

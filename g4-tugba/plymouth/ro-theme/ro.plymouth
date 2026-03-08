@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Ro Boot
+Description=Ro OS Boot Screen
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/ro-theme
+ScriptFile=/usr/share/plymouth/themes/ro-theme/ro.script
