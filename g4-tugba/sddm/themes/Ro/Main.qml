@@ -6,70 +6,77 @@ Rectangle {
     id: root
     width: Screen.width
     height: Screen.height
+    color: "#FFFFFF"
 
-    // --- SABİT ARKA PLAN (MOJAVE ÇÖLÜ) ---
+    // --- SABİT ARKA PLAN (GÜN BATIMI ÇÖLÜ) ---
     Image {
         id: backgroundImage
         anchors.fill: parent
-        source: "mojave.png" // Uzantı tam istediğin gibi .png oldu!
+        source: "mojave_day.png" // Senin ayarladığın .png uzantılı görsel
         fillMode: Image.PreserveAspectCrop
         smooth: true
     }
 
-    // --- MERKEZİ KOYU CAM PANEL ---
+    // --- MERKEZİ GİRİŞ PANELİ (BUZLU CAM) ---
     Rectangle {
         id: loginBox
         width: 380; height: 500
         anchors.centerIn: parent
-        color: "#B30A0514" 
+        color: "#CCFFFFFF" // Aydınlık yarı saydam cam
         radius: 35
-        border.color: "#80FF5400" 
+        border.color: "#FF9A8B" // Gün batımı pembesi/turuncusu kenarlık
         border.width: 1.5
 
+        // Profil İkonu
         Rectangle {
             id: avatar
             width: 110; height: 110; radius: 55
             anchors.top: parent.top; anchors.topMargin: 40; anchors.horizontalCenter: parent.horizontalCenter
-            color: "#1AFFFFFF"; border.color: "#FF5400"; border.width: 2.5
+            color: "white"
+            border.color: "#FF7E5F" // Sıcak turuncu
+            border.width: 3
             Text {
                 anchors.centerIn: parent
                 text: userModel.lastUser ? userModel.lastUser.charAt(0).toUpperCase() : "👤"
-                color: "#FF5400"; font.pixelSize: 50; font.bold: true
+                color: "#FF7E5F"; font.pixelSize: 50; font.bold: true
             }
         }
 
+        // Kullanıcı Seçici
         ComboBox {
             id: userSelector
             anchors.top: avatar.bottom; anchors.topMargin: 30; anchors.horizontalCenter: parent.horizontalCenter
             width: 260; height: 45
             model: userModel; textRole: "name"; currentIndex: userModel.lastIndex
-            background: Rectangle { color: "#33FFFFFF"; radius: 15; border.color: "#55FFFFFF" }
-            contentItem: Text { text: userSelector.currentText; color: "white"; font.pixelSize: 16; font.bold: true; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
+            background: Rectangle { color: "white"; radius: 15; border.color: "#E0E0E0" }
+            contentItem: Text { text: userSelector.currentText; color: "#333333"; font.pixelSize: 16; font.bold: true; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
         }
 
+        // Şifre Girişi
         Rectangle {
             id: passField
             width: 260; height: 45
             anchors.top: userSelector.bottom; anchors.topMargin: 15; anchors.horizontalCenter: parent.horizontalCenter
-            color: "#33FFFFFF"; radius: 15; border.color: "#55FFFFFF"
+            color: "white"; radius: 15; border.color: "#E0E0E0"
             TextInput {
                 id: passwordInput
                 anchors.fill: parent; anchors.margins: 10
                 verticalAlignment: TextInput.AlignVCenter; horizontalAlignment: TextInput.AlignHCenter
-                echoMode: TextInput.Password; color: "white"; font.pixelSize: 18; focus: true
+                echoMode: TextInput.Password; color: "#000000"; font.pixelSize: 18; focus: true
                 passwordCharacter: "●"
                 onAccepted: sddm.login(userSelector.currentText, passwordInput.text, sessionSelector.currentIndex)
             }
         }
 
+        // Giriş Butonu (Gün Batımı Gradienti)
         Button {
             anchors.top: passField.bottom; anchors.topMargin: 30; anchors.horizontalCenter: parent.horizontalCenter
             width: 260; height: 50
             background: Rectangle {
                 radius: 15
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: "#FF5400" } 
-                    GradientStop { position: 1.0; color: "#7B2CBF" } 
+                    GradientStop { position: 0.0; color: "#FF7E5F" } // Sıcak Turuncu
+                    GradientStop { position: 1.0; color: "#FEB47B" } // Yumuşak Sarı/Şeftali
                 }
             }
             contentItem: Text { text: "Giriş Yap"; color: "white"; font.pixelSize: 18; font.bold: true; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
@@ -80,16 +87,18 @@ Rectangle {
     // --- ALT BAR: OTURUM VE TÜM GÜÇ BUTONLARI ---
     Rectangle {
         anchors.bottom: parent.bottom; width: parent.width; height: 80
-        color: "#80000000"
+        color: "#66000000" // Butonların okunması için koyu şeffaf bir alt zemin
 
+        // Sol Alt: Oturum Seçimi
         ComboBox {
             id: sessionSelector
             anchors.left: parent.left; anchors.leftMargin: 30; anchors.verticalCenter: parent.verticalCenter
             width: 180; height: 40; model: sessionModel; textRole: "name"
-            background: Rectangle { color: "#4DFFFFFF"; radius: 10; border.color: "transparent" }
+            background: Rectangle { color: "#33FFFFFF"; radius: 10; border.color: "transparent" }
             contentItem: Text { text: sessionSelector.currentText; color: "white"; font.bold: true; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
         }
 
+        // Sağ Alt: Güç Butonları Grubu
         Row {
             anchors.right: parent.right; anchors.rightMargin: 30; anchors.verticalCenter: parent.verticalCenter
             spacing: 15
@@ -106,7 +115,7 @@ Rectangle {
             }
             Button {
                 text: "Kapat"; onClicked: sddm.powerOff()
-                background: Rectangle { color: "#CCFF2A2A"; radius: 10 } 
+                background: Rectangle { color: "#CCFF4444"; radius: 10 } // Dikkat çekici kırmızımsı kapat butonu
                 contentItem: Text { text: parent.text; color: "white"; font.bold: true; padding: 10 }
             }
         }
